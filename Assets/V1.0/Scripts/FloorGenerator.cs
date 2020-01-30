@@ -7,6 +7,11 @@ public class FloorGenerator : MonoBehaviour
     private int Row { get; set; }
     private int Column { get; set; }
 
+    //todo Refactor this
+    private int CenterX;
+    private int CenterY;
+
+
     [SerializeField] private float waitTime=0.5f;
 
     [SerializeField] private GameObject _floorUnitPrefab;
@@ -19,6 +24,8 @@ public class FloorGenerator : MonoBehaviour
 
     public void Start()
     {
+        CenterX = 4;
+        CenterY = 4;
         GenerateMap(9,9);
     }
 
@@ -42,6 +49,11 @@ public class FloorGenerator : MonoBehaviour
                 yield return new WaitForSeconds(waitTime);
                 CurrentPosition = new Vector3(j, 0, i);
                 var floor=Instantiate(_floorUnitPrefab, CurrentPosition, Quaternion.identity);
+                if (i==CenterX && j==CenterY)
+                {
+                    CardBehaviour cardBehaviour = floor.GetComponentInChildren<CardBehaviour>();
+                    cardBehaviour.MakeCenter();
+                }
                 floor.transform.parent = floorRoot.transform;
             }
             

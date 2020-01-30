@@ -11,6 +11,7 @@ public class ClickManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out var hit, 100.0f))
         {
+            Debug.Log(hit.transform.name);
             if (hit.transform.tag == CardTag)
             {
                 CardBehaviour behaviour = hit.transform.GetComponent<CardBehaviour>();
