@@ -11,6 +11,7 @@ namespace Kentro
         [SerializeField]private bool IsMoving;
         [SerializeField] private float speed = 1f;
         [SerializeField] private  float _framewait = 0.1f;
+        public Card Card { get; set; }
         private Vector3 _targetPosition;
 
 
@@ -29,6 +30,7 @@ namespace Kentro
                 yield return new WaitForSeconds(_framewait);
                 float step = speed * Time.deltaTime; // calculate distance to move
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, step);
+                IsSelected = false;
             }
 
             IsMoving = false;

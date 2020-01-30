@@ -46,6 +46,11 @@ namespace Kentro
             value = new Random().Next(1, 7);
         }
 
+        public void SetPawn(PawnLogic pawn)
+        {
+            Pawn = pawn;
+        }
+
         /*public Card(PlayerEnum player, int value)
         {
             this.value = value;

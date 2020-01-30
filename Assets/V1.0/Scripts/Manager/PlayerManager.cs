@@ -38,7 +38,11 @@ public class PlayerManager : MonoBehaviour
         foreach (var pawns in PlayerOnePawns)
         {
             Card card = GameManager.Instance.GetCard(pawns);
+            card.value = 1;
             var pawnInstance=Instantiate(Player1.PawnPrefab, card.WorldPos, Quaternion.identity);
+            card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
+            pawnInstance.GetComponent<PawnLogic>().Card = card;
+            
             Player1.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
         }
 
@@ -46,7 +50,10 @@ public class PlayerManager : MonoBehaviour
         foreach (var pawns in PlayerTwoPawns)
         {
             Card card = GameManager.Instance.GetCard(pawns);
+            card.value = 1;
             var pawnInstance = Instantiate(Player2.PawnPrefab, card.WorldPos+HeightOffset, Quaternion.identity);
+            card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
+            pawnInstance.GetComponent<PawnLogic>().Card = card;
             Player2.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
         }
 

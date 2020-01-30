@@ -43,6 +43,5 @@ namespace Kentro
             Cards.Add(card);
         }
 
-
     }
 }

@@ -24,7 +24,7 @@ public class CardBehaviour : MonoBehaviour
 
     public void RevealCard()
     {
-        if(IsCenter)return;
+        if(IsCenter || Card.flipped)return;
         Card.Flip();
         SetNumber(Card.value);
         _animator.SetBool("Revealed", Card.flipped);
