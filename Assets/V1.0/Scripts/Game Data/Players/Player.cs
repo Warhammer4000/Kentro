@@ -1,22 +1,31 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace Kentro
 {
+    [Serializable]
     public class Player
     {
-        public List<IPowerUp> PowerUps;
-        public List<Pawn> pawn;
-        private int NumberOfPawn = 3;
         public PlayerEnum PlayerId;
-        public Player(int x,int y,PlayerEnum playerId )
+        public GameObject PawnPrefab;
+        public List<PawnLogic> Pawns;
+
+        public List<IPowerUp> PowerUps;
+       
+        [SerializeField]private int _numberOfPawn = 3;
+       
+        //todo
+        public Player()
         {
-            this.PlayerId = playerId;
-            pawn = new List<Pawn>();
+            Pawns=new List<PawnLogic>();
+            /*this.PlayerId = playerId;
+            pawn = new List<PawnLogic>();
             for(int i = 0; i<NumberOfPawn; i++)
-                pawn.Add(new Pawn(x,y));
-            PowerUps = new List<IPowerUp>();
+                pawn.Add(new PawnLogic(x,y));
+            PowerUps = new List<IPowerUp>();*/
         }
 
 

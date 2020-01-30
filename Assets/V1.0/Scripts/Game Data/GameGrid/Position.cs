@@ -4,28 +4,26 @@ using System;
 
 namespace Kentro
 {
+    [Serializable]
     public class Position
     {
-        public int x, y;
+        public int X, Y;
 
         public Position(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
 
-        public bool equals(int v,int w)
+        public override bool Equals(object obj)
         {
-            if (v == x && w == y) return true;
-            else
-            {
-                return false;
-            }
+            return Equals(obj as Position);
+        }
+        public bool Equals(Position obj)
+        {
+            return obj != null && obj.X == X && obj.Y == Y;
         }
 
-        public static explicit operator Position(int v)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

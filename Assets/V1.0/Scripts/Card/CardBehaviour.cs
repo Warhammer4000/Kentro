@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Kentro;
+using TMPro;
 using UnityEngine;
 
 public class CardBehaviour : MonoBehaviour
@@ -9,7 +10,7 @@ public class CardBehaviour : MonoBehaviour
     [SerializeField] private bool IsCenter;
     [SerializeField] private GameObject CenterVFX;
 
-
+    public Card Card;
 
     void Start()
     {
@@ -24,12 +25,16 @@ public class CardBehaviour : MonoBehaviour
     public void RevealCard()
     {
         if(IsCenter)return;
-        _animator.SetBool("Revealed", true);
+        Card.Flip();
+        SetNumber(Card.value);
+        _animator.SetBool("Revealed", Card.flipped);
+       
     }
 
     public void HideCard()
     {
-        _animator.SetBool("Revealed", false);
+        Card.Flip();
+        _animator.SetBool("Revealed", Card.flipped);
     }
 
     public void MakeCenter()

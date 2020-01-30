@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Card
   - FxTemporaire
+  - Pawn
   layers:
   - Default
   - TransparentFX

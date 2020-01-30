@@ -8,7 +8,7 @@ namespace Kentro
 {
     public enum PlayerEnum
     {
-        NoPlayer,
+        AI,
         Player1,
         Player2
         

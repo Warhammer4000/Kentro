@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Kentro;
 using UnityEngine;
+using Grid = Kentro.Grid;
 
 public class FloorGenerator : MonoBehaviour
 {
     private int Row { get; set; }
     private int Column { get; set; }
 
-    //todo Refactor this
-    private int CenterX;
-    private int CenterY;
-
+ 
+    private Position Center;
 
     [SerializeField] private float waitTime=0.5f;
 
@@ -22,17 +22,14 @@ public class FloorGenerator : MonoBehaviour
     public Vector3 CurrentPosition;
 
 
-    public void Start()
-    {
-        CenterX = 4;
-        CenterY = 4;
-        GenerateMap(9,9);
-    }
+    private Grid _gameGrid;
 
-    public void GenerateMap(int row,int column)
+    public void GenerateMap(Grid gameGrid)
     {
-        Row = row;
-        Column = column;
+        _gameGrid = gameGrid;
+        Row = _gameGrid.GridSize;
+        Column = _gameGrid.GridSize;
+        Center = _gameGrid.Goal;
         CurrentPosition = InitialPosition;
         StartCoroutine(GenerateRoutin());
     }
@@ -49,15 +46,18 @@ public class FloorGenerator : MonoBehaviour
                 yield return new WaitForSeconds(waitTime);
                 CurrentPosition = new Vector3(j, 0, i);
                 var floor=Instantiate(_floorUnitPrefab, CurrentPosition, Quaternion.identity);
-                if (i==CenterX && j==CenterY)
+                CardBehaviour cardBehaviour = floor.GetComponentInChildren<CardBehaviour>();
+                cardBehaviour.Card=new Card(new Position(i, j),cardBehaviour.transform.position);
+                _gameGrid.SetCard(cardBehaviour.Card);
+                if (i==Center.X && j==Center.Y)
                 {
-                    CardBehaviour cardBehaviour = floor.GetComponentInChildren<CardBehaviour>();
                     cardBehaviour.MakeCenter();
                 }
                 floor.transform.parent = floorRoot.transform;
             }
             
         }
+        PlayerManager.Instance.CreatePawns();
 
     }
 
