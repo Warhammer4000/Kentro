@@ -7,12 +7,19 @@ namespace Kentro
 {
     public class PawnLogic:MonoBehaviour
     {
-        public bool IsSelected;
-        [SerializeField]private bool IsMoving;
+        private bool IsSelected;
+        private bool IsMoving;
+        [Header("Configs")]
         [SerializeField] private float speed = 1f;
         [SerializeField] private  float _framewait = 0.1f;
         public Card Card { get; set; }
         private Vector3 _targetPosition;
+        [SerializeField]private Animator _animator;
+
+
+        public delegate void PawnSelectionEvent();
+
+        public PawnSelectionEvent OnPawnSelection;
 
 
         public void Move(Card card)
@@ -24,6 +31,19 @@ namespace Kentro
             if(IsMoving)return;
             IsMoving = true;
             StartCoroutine(MoveRoutine());
+        }
+
+        public void SelectPawn()
+        {
+            IsSelected = true;
+            _animator.SetBool("Hovering",IsSelected);
+            OnPawnSelection?.Invoke();
+        }
+
+        public void DeselectPawn()
+        {
+            IsSelected = false;
+            _animator.SetBool("Hovering", IsSelected);
         }
 
         IEnumerator MoveRoutine()

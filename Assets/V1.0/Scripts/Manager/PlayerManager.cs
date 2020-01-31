@@ -35,31 +35,38 @@ public class PlayerManager : MonoBehaviour
 
         PlayerTwoPawns = GameManager.Instance.GetPlayer2PawnPositions();
 
-        foreach (var pawns in PlayerOnePawns)
-        {
-            Card card = GameManager.Instance.GetCard(pawns);
-            card.value = 1;
-            var pawnInstance=Instantiate(Player1.PawnPrefab, card.WorldPos, Quaternion.identity);
-            card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
-            pawnInstance.GetComponent<PawnLogic>().Card = card;
-            
-            Player1.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
-        }
+        SpawnPawn(Player1,PlayerOnePawns);
+        SpawnPawn(Player2,PlayerTwoPawns);
 
 
-        foreach (var pawns in PlayerTwoPawns)
-        {
-            Card card = GameManager.Instance.GetCard(pawns);
-            card.value = 1;
-            var pawnInstance = Instantiate(Player2.PawnPrefab, card.WorldPos+HeightOffset, Quaternion.identity);
-            card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
-            pawnInstance.GetComponent<PawnLogic>().Card = card;
-            Player2.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
-        }
+
 
     }
 
+    private void SpawnPawn(Player player, List<Position> pawnPositions)
+    {
+        foreach (var position in pawnPositions)
+        {
+            Card card = GameManager.Instance.GetCard(position);
+            card.value = 1;
+            var pawnInstance = Instantiate(player.PawnPrefab, card.WorldPos, Quaternion.identity);
+            card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
+            pawnInstance.GetComponent<PawnLogic>().Card = card;
 
+            player.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
+        }
+
+        //todo we can do better
+        for (int i = 0; i < player.Pawns.Count; i++)
+        {
+            for (int j = 0; j < player.Pawns.Count; j++)
+            {
+                if(i==j)continue;
+                player.Pawns[i].OnPawnSelection += player.Pawns[j].DeselectPawn;
+
+            }
+        }
+    }
 
 
 }

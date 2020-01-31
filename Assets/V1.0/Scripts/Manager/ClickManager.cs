@@ -20,22 +20,12 @@ public class ClickManager : MonoBehaviour
 
                 if (behaviour.Card.Pawn != null)
                 {
-                    behaviour.Card.Pawn.IsSelected = behaviour.Card.Pawn.IsSelected == false;
+                    behaviour.Card.Pawn.SelectPawn();
                     return;
                 }
 
 
-                for (int i = 0; i < 3; i++)
-                {
-                    PawnLogic pawn = PlayerManager.Instance.Player2.Pawns[i];
-                    switch (pawn.IsSelected)
-                    {
-                        case true when isValid(pawn.Card, behaviour.Card):
-                            behaviour.RevealCard();
-                            pawn.Move(behaviour.Card);
-                            return;
-                    }
-                }
+              
                 
 
                 
@@ -47,16 +37,7 @@ public class ClickManager : MonoBehaviour
             {
                 PawnLogic pawn = hit.transform.GetComponent<PawnLogic>();
                 
-                if (pawn.IsSelected == false)
-                {
-                    pawn.IsSelected = true;
-                    
-                } 
-                    
-                else
-                {
-                    pawn.IsSelected = false;
-                }
+                pawn.SelectPawn();
                 
             }
         }
