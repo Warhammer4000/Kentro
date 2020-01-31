@@ -15,9 +15,12 @@ namespace Kentro
         private Vector3 _targetPosition;
 
 
-        public void Move(Vector3 targetPosition)
+        public void Move(Card card)
         {
-            _targetPosition = targetPosition;
+            _targetPosition = Card.WorldPos;
+            Card.SetPawn(null);
+            Card = card;
+            Card.SetPawn(this);
             if(IsMoving)return;
             IsMoving = true;
             StartCoroutine(MoveRoutine());
