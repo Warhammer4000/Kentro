@@ -17,7 +17,7 @@ namespace Kentro
 
         public void Move(Card card)
         {
-            _targetPosition = Card.WorldPos;
+            _targetPosition = card.WorldPos;
             Card.SetPawn(null);
             Card = card;
             Card.SetPawn(this);
