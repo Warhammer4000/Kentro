@@ -47,7 +47,9 @@ public class FloorGenerator : MonoBehaviour
                 CurrentPosition = new Vector3(j, 0, i);
                 var floor=Instantiate(_floorUnitPrefab, CurrentPosition, Quaternion.identity);
                 CardBehaviour cardBehaviour = floor.GetComponentInChildren<CardBehaviour>();
-                cardBehaviour.Card=new Card(new Position(i, j),cardBehaviour.transform.position);
+                cardBehaviour.RegisterCard(new Card(new Position(i, j)));
+
+
                 _gameGrid.SetCard(cardBehaviour.Card);
                 if (i==Center.X && j==Center.Y)
                 {

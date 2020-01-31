@@ -6,7 +6,9 @@ public class ClickManager : MonoBehaviour
 {
     [SerializeField] private string CardTag = "Card";
     [SerializeField] private string PawnTag = "Pawn";
-    //public PlayerManager PlayerManager;
+
+    private PawnLogic _selectedPawn;
+
     void Update()
     {
         if (!Input.GetMouseButtonDown(0)) return;
@@ -18,9 +20,20 @@ public class ClickManager : MonoBehaviour
             {
                 CardBehaviour behaviour = hit.transform.GetComponent<CardBehaviour>();
 
+                if (_selectedPawn != null)
+                {
+                    if (behaviour.Card.IsHovering)
+                    {
+                        behaviour.Card.Reveal();
+                        _selectedPawn.Move(behaviour.Card);
+                    }
+                }
+
                 if (behaviour.Card.Pawn != null)
                 {
-                    behaviour.Card.Pawn.SelectPawn();
+                    _selectedPawn= behaviour.Card.Pawn;
+                    _selectedPawn.SelectPawn();
+                    
                     return;
                 }
 
@@ -44,17 +57,6 @@ public class ClickManager : MonoBehaviour
     }
 
 
-    private bool isValid(Card pawnCard,Card target)
-    {
-        if (pawnCard.Position.X + pawnCard.value == target.Position.X && pawnCard.Position.Y == target.Position.Y)
-            return true;
-        else if (pawnCard.Position.X - pawnCard.value == target.Position.X && pawnCard.Position.Y == target.Position.Y)
-            return true;
-        else if (pawnCard.Position.Y + pawnCard.value == target.Position.Y && pawnCard.Position.X == target.Position.X)
-            return true;
-        else if (pawnCard.Position.Y - pawnCard.value == target.Position.Y && pawnCard.Position.X == target.Position.X)
-            return true;
-        return false;
-    }
+   
 
 }

@@ -13,37 +13,49 @@ namespace Kentro
         public Position Position;
         public Vector3 WorldPos;
         public bool flipped;
+        public bool IsHovering;
         public IPowerUp powerup;
         public PawnLogic Pawn;
         //todo
-        private PowerUpFactory powerFactory;
+        //private PowerUpFactory powerFactory;
 
-        public Card(Position position,Vector3 worldPos)
+        public delegate void CardEvent();
+
+        public CardEvent OnCardReveal;
+        public CardEvent OnCardHide;
+        public CardEvent OnCardHover;
+        public CardEvent OnCardIdle;
+
+        public Card(Position position)
         {
-
-            //value = new Random().Next(1,7);
             Position = position;
             flipped = false;
-            WorldPos = worldPos;
-            /*powerFactory = new PowerUpFactory();
-
-            switch (powerFactory.ListPowerUps.Count)
-            {
-                case 0:
-                    powerup = new PNone();
-                    break;
-                default:
-                    powerup = powerFactory.ListPowerUps.Peek();
-                    powerFactory.ListPowerUps.Pop();
-                    break;
-            }*/
-
         }
 
-        public void Flip()
+        public void Reveal()
         {
-            flipped = !flipped;
+           
             value = new Random().Next(1, 7);
+            OnCardReveal?.Invoke();
+            flipped = true;
+        }
+
+        public void Hide()
+        {
+            flipped = false;
+            OnCardHide?.Invoke();
+        }
+
+        public void Hover()
+        {
+            IsHovering = true;
+            OnCardHover?.Invoke();
+        }
+
+        public void Idle()
+        {
+            IsHovering = false;
+            OnCardIdle?.Invoke();
         }
 
         public void SetPawn(PawnLogic pawn)
@@ -51,13 +63,6 @@ namespace Kentro
             Pawn = pawn;
         }
 
-        /*public Card(PlayerEnum player, int value)
-        {
-            this.value = value;
-            pawnOwner = player;
-            flipped = true;
-            powerup = new PNone();
-            
-        }*/
+        
     }
 }

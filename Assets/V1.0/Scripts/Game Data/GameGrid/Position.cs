@@ -1,6 +1,7 @@
 ﻿
 
 using System;
+using JetBrains.Annotations;
 
 namespace Kentro
 {
@@ -15,15 +16,14 @@ namespace Kentro
             Y = y;
         }
 
-        public override bool Equals(object obj)
+        public static bool operator ==([NotNull] Position left,[NotNull] Position right)
         {
-            return Equals(obj as Position);
-        }
-        public bool Equals(Position obj)
-        {
-            return obj != null && obj.X == X && obj.Y == Y;
+            return left.X == right.X && left.Y == right.Y;
         }
 
-
+        public static bool operator !=(Position left, Position right)
+        {
+            return !(left == right);
+        }
     }
 }

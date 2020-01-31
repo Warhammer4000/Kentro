@@ -55,6 +55,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -124,9 +125,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1347391566930912127}
+  _hoverAnimator: {fileID: 7838230963875744483}
   _cardNumberTextMesh: {fileID: 7977273291447947479}
   IsCenter: 0
   CenterVFX: {fileID: 812409749375629508}
+  Card:
+    value: 0
+    Position:
+      X: 0
+      Y: 0
+    WorldPos: {x: 0, y: 0, z: 0}
+    flipped: 0
+    Pawn: {fileID: 0}
 --- !u!1001 &5244631198097988965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,36 +153,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.024
-      objectReference: {fileID: 0}
-    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.82107
-      objectReference: {fileID: 0}
-    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.031587385
-      objectReference: {fileID: 0}
-    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.82107
-      objectReference: {fileID: 0}
-    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 878388666347787133, guid: bcaab8b8dcf38f547859abfd355916b7,
         type: 3}
@@ -243,6 +223,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.82107
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.031587385
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.82107
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113959475408729094, guid: bcaab8b8dcf38f547859abfd355916b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcaab8b8dcf38f547859abfd355916b7, type: 3}

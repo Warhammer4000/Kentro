@@ -4,38 +4,57 @@ using UnityEngine;
 
 public class CardBehaviour : MonoBehaviour
 {
-    [SerializeField]private Animator _animator;
-    [SerializeField]private TextMeshPro _cardNumberTextMesh;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Animator _hoverAnimator;
+    [SerializeField] private TextMeshPro _cardNumberTextMesh;
 
     [SerializeField] private bool IsCenter;
     [SerializeField] private GameObject CenterVFX;
 
     public Card Card;
 
-    void Start()
+    private void Start()
     {
-       
-        
-        if (_animator == null)
-        {
-            Debug.LogWarning(gameObject.name+" Doesn't have animator");
-        }
+        if (_animator == null) Debug.LogWarning(gameObject.name + " Doesn't have animator");
     }
+
+
+    public void RegisterCard(Card card)
+    {
+        Card = card;
+        Card.WorldPos = transform.position;
+        Card.OnCardHover += HoverCard;
+        Card.OnCardIdle += IdleCard;
+        Card.OnCardReveal += RevealCard;
+        Card.OnCardHide += HideCard;
+    }
+
+    #region AnimationFunctions
 
     public void RevealCard()
     {
-        if(IsCenter || Card.flipped)return;
-        Card.Flip();
+        if (IsCenter || Card.flipped) return;
         SetNumber(Card.value);
-        _animator.SetBool("Revealed", Card.flipped);
-       
+        _animator.SetBool("Revealed", true);
     }
 
     public void HideCard()
     {
-        Card.Flip();
-        _animator.SetBool("Revealed", Card.flipped);
+    
+        _animator.SetBool("Revealed", false);
     }
+
+    public void HoverCard()
+    {
+        _hoverAnimator.SetBool("Hovering",true);
+    }
+
+    public void IdleCard()
+    {
+        _hoverAnimator.SetBool("Hovering", false);
+    }
+
+    #endregion
 
     public void MakeCenter()
     {

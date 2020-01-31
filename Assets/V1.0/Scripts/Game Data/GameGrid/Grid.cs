@@ -35,7 +35,7 @@ namespace Kentro
 
         public Card GetCard(Position position)
         {
-            return Cards.FirstOrDefault(r => r.Position.X == position.X && r.Position.Y==position.Y);
+            return Cards.FirstOrDefault(r => r.Position==position);
         }
 
         public void SetCard(Card card)

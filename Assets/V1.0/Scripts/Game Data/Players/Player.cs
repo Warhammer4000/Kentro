@@ -21,11 +21,7 @@ namespace Kentro
         public Player()
         {
             Pawns=new List<PawnLogic>();
-            /*this.PlayerId = playerId;
-            pawn = new List<PawnLogic>();
-            for(int i = 0; i<NumberOfPawn; i++)
-                pawn.Add(new PawnLogic(x,y));
-            PowerUps = new List<IPowerUp>();*/
+          
         }
 
 
