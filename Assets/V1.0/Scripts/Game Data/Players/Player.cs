@@ -9,7 +9,7 @@ namespace Kentro
     [Serializable]
     public class Player
     {
-        public PlayerEnum PlayerId;
+        
         public GameObject PawnPrefab;
         public List<PawnLogic> Pawns;
 
@@ -17,6 +17,7 @@ namespace Kentro
        
         [SerializeField]private int _numberOfPawn = 3;
         public bool isMyTurn;
+        public int Score = 0;
        
         //todo
         public Player()

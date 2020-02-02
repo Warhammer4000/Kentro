@@ -1,17 +1,30 @@
 ﻿
+using Kentro;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance;
-    [SerializeField] private int player1Score;
-    [SerializeField] private int player2Score;
+    public static ScoreManager Instance;
+    private int goalScore = 100;
+    private int hitScore = 30;
 
     void Awake()
     {
-        if(instance == null)
+        if(Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
+    }
+
+    public void GoalScoreAdd(Player player)
+    {
+        player.Score += goalScore;
+        Debug.Log(player.Score);
+    }
+
+    public void HitScoreAdd(Player player)
+    {
+        player.Score += hitScore;
+        Debug.Log(player.Score);
     }
 }

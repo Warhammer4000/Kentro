@@ -1,6 +1,6 @@
 ﻿
 using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Generic; 
 using UnityEngine;
 
 namespace Kentro
@@ -38,6 +38,7 @@ namespace Kentro
                 card.Pawn.transform.position = card.Pawn.defaultCard.WorldPos;              
                 card.Pawn.Card = card.Pawn.defaultCard;
                 card.Pawn.defaultCard.Pawn = card.Pawn;
+                ScoreManager.Instance.HitScoreAdd(player);
             }
             _targetPosition = card.WorldPos;
             Card.SetPawn(null);
@@ -45,7 +46,11 @@ namespace Kentro
             Card = card;
             Card.SetPawn(this);
             StartCoroutine(MoveRoutine());
-            if (Card.isCenter == true) Card.Pawn = null;
+            if (Card.isCenter == true)
+            {
+                ScoreManager.Instance.GoalScoreAdd(player);
+                Card.Pawn = null;
+            }
         }
 
         public void SelectPawn()
