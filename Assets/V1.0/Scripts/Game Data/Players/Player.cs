@@ -12,6 +12,7 @@ namespace Kentro
         public PlayerEnum PlayerId;
         public GameObject PawnPrefab;
         public List<PawnLogic> Pawns;
+        public bool IsMyTurn;
 
         public List<IPowerUp> PowerUps;
        
@@ -21,8 +22,10 @@ namespace Kentro
         public Player()
         {
             Pawns=new List<PawnLogic>();
-          
+            
+
         }
+
 
 
     }

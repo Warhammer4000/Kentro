@@ -19,23 +19,31 @@ public class ClickManager : MonoBehaviour
             if (hit.transform.tag == CardTag)
             {
                 CardBehaviour behaviour = hit.transform.GetComponent<CardBehaviour>();
+                Debug.Log(behaviour.Card.Pawn.Player.IsMyTurn );
+
+
+                if (behaviour.Card.Pawn != null )
+                {
+                    //Debug.Log("Here is pawn");
+                    _selectedPawn = behaviour.Card.Pawn;
+                    _selectedPawn.SelectPawn();
+
+                    return;
+                }
 
                 if (_selectedPawn != null)
                 {
                     if (behaviour.Card.IsHovering)
                     {
+                        //Debug.Log("Here is card");
+
                         behaviour.Card.Reveal();
                         _selectedPawn.Move(behaviour.Card);
+                        _selectedPawn = null;
                     }
                 }
 
-                if (behaviour.Card.Pawn != null)
-                {
-                    _selectedPawn= behaviour.Card.Pawn;
-                    _selectedPawn.SelectPawn();
-                    
-                    return;
-                }
+               
 
 
               
@@ -46,13 +54,13 @@ public class ClickManager : MonoBehaviour
 
             }
 
-            if (hit.transform.tag == PawnTag)
-            {
-                PawnLogic pawn = hit.transform.GetComponent<PawnLogic>();
+            //if (hit.transform.tag == PawnTag)
+            //{
+            //    PawnLogic pawn = hit.transform.GetComponent<PawnLogic>();
                 
-                pawn.SelectPawn();
+            //    pawn.SelectPawn();
                 
-            }
+            //}
         }
     }
 

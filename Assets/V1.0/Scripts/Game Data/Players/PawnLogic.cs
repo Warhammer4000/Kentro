@@ -17,6 +17,7 @@ namespace Kentro
         private float CurrentSpeed;
         private  float _framewait = 0f;
         public Card Card;
+        public Player Player;
         private Vector3 _targetPosition;
         [SerializeField]private Animator _animator;
         List<Card> validCards;
@@ -38,6 +39,7 @@ namespace Kentro
             Card = card;
             Card.SetPawn(this);
             StartCoroutine(MoveRoutine());
+            
         }
 
         public void SelectPawn()
@@ -73,6 +75,7 @@ namespace Kentro
             {
                 card.Idle();
             }
+            validCards.Clear();
         }
 
 

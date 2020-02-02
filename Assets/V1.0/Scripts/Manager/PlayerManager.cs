@@ -37,6 +37,8 @@ public class PlayerManager : MonoBehaviour
 
         SpawnPawn(Player1,PlayerOnePawns);
         SpawnPawn(Player2,PlayerTwoPawns);
+        Player1.IsMyTurn = true;
+        Player2.IsMyTurn = false;
 
 
 
@@ -49,11 +51,13 @@ public class PlayerManager : MonoBehaviour
         {
             Card card = GameManager.Instance.GetCard(position);
             card.value = 1;
+            card.flipped = true;
             var pawnInstance = Instantiate(player.PawnPrefab, card.WorldPos, Quaternion.identity);
             card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
             pawnInstance.GetComponent<PawnLogic>().Card = card;
+            pawnInstance.GetComponent<PawnLogic>().Player = player;
 
-            player.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
+                player.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
         }
 
         //todo we can do better
