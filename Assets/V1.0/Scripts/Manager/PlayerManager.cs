@@ -35,12 +35,10 @@ public class PlayerManager : MonoBehaviour
 
         PlayerTwoPawns = GameManager.Instance.GetPlayer2PawnPositions();
 
+        Player1.isMyTurn = true;
+        Player2.isMyTurn = false;
         SpawnPawn(Player1,PlayerOnePawns);
         SpawnPawn(Player2,PlayerTwoPawns);
-
-
-
-
     }
 
     private void SpawnPawn(Player player, List<Position> pawnPositions)
@@ -52,6 +50,7 @@ public class PlayerManager : MonoBehaviour
             var pawnInstance = Instantiate(player.PawnPrefab, card.WorldPos, Quaternion.identity);
             card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
             pawnInstance.GetComponent<PawnLogic>().Card = card;
+            pawnInstance.GetComponent<PawnLogic>().player = player;
 
             player.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
         }

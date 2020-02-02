@@ -20,6 +20,7 @@ namespace Kentro
         private Vector3 _targetPosition;
         [SerializeField]private Animator _animator;
         List<Card> validCards;
+        public Player player;
 
         public delegate void PawnSelectionEvent();
 

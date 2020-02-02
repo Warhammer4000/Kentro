@@ -16,6 +16,7 @@ namespace Kentro
         public List<IPowerUp> PowerUps;
        
         [SerializeField]private int _numberOfPawn = 3;
+        public bool isMyTurn;
        
         //todo
         public Player()

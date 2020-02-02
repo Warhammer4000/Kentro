@@ -8,6 +8,7 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private string PawnTag = "Pawn";
 
     private PawnLogic _selectedPawn;
+    private bool turn = true;
 
     void Update()
     {
@@ -26,24 +27,17 @@ public class ClickManager : MonoBehaviour
                     {
                         behaviour.Card.Reveal();
                         _selectedPawn.Move(behaviour.Card);
+                        
                     }
                 }
 
-                if (behaviour.Card.Pawn != null)
+                if (behaviour.Card.Pawn != null && turn == behaviour.Card.Pawn.player.isMyTurn)
                 {
                     _selectedPawn= behaviour.Card.Pawn;
                     _selectedPawn.SelectPawn();
-                    
+                    turn = !turn;
                     return;
                 }
-
-
-              
-                
-
-                
-
-
             }
 
             if (hit.transform.tag == PawnTag)
