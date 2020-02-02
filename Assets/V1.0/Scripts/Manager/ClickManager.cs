@@ -40,13 +40,13 @@ public class ClickManager : MonoBehaviour
                 }
             }
 
-            if (hit.transform.tag == PawnTag)
-            {
-                PawnLogic pawn = hit.transform.GetComponent<PawnLogic>();
+            //if (hit.transform.tag == PawnTag)
+            //{
+            //    PawnLogic pawn = hit.transform.GetComponent<PawnLogic>();
                 
-                pawn.SelectPawn();
+            //    pawn.SelectPawn();
                 
-            }
+            //}
         }
     }
 

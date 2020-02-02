@@ -85,15 +85,20 @@ namespace Kentro
             Position currentPosition = Card.Position;
             Position[] possibleMovingPositions=new Position[4];
 
-            possibleMovingPositions[0]=new Position(currentPosition.X+distance, currentPosition.Y);
-            possibleMovingPositions[1] = new Position(currentPosition.X-distance, currentPosition.Y);
-            possibleMovingPositions[2] = new Position(currentPosition.X, currentPosition.Y+distance);
-            possibleMovingPositions[3] = new Position(currentPosition.X, currentPosition.Y-distance);
+            possibleMovingPositions[0]=new Position(currentPosition.X+distance, 
+                currentPosition.Y);
+            possibleMovingPositions[1] = new Position(currentPosition.X-distance,
+                currentPosition.Y);
+            possibleMovingPositions[2] = new Position(currentPosition.X,
+                currentPosition.Y+distance);
+            possibleMovingPositions[3] = new Position(currentPosition.X,
+                currentPosition.Y-distance);
 
             foreach (var position in possibleMovingPositions)
-            {
+            { 
                 var card = GameManager.Instance.GetCard(position);
-                if(card==null)continue;
+                if(card==null) continue;
+                if (card.Pawn != null && card.Pawn.player == player) continue;
                 cards.Add(card);
             }
 
@@ -111,6 +116,7 @@ namespace Kentro
 
             IsMoving = false;
             DeselectPawn();
+            validCards.Clear();
         }
 
     }

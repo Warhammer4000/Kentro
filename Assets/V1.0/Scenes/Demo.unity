@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18235011, g: 0.22805753, b: 0.30730876, a: 1}
+  m_IndirectSpecularColor: {r: 0.1823506, g: 0.22805834, b: 0.30730993, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -394,7 +394,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.54
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -418,7 +418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.26220867, y: -0.33457658, z: 0.09748851, w: 0.8998895}
-  m_LocalPosition: {x: 8.23, y: 4.14, z: -0.23}
+  m_LocalPosition: {x: 9.59, y: 5.47, z: -1.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -567,12 +567,14 @@ MonoBehaviour:
       type: 3}
     Pawns: []
     _numberOfPawn: 3
+    isMyTurn: 0
   Player2:
     PlayerId: 0
     PawnPrefab: {fileID: 7087989339956452625, guid: e4572fa945ab57743b7cf88675e9cbf0,
       type: 3}
     Pawns: []
     _numberOfPawn: 3
+    isMyTurn: 0
   HeightOffset: {x: 0, y: 0.5, z: 0}
   PlayerOnePawns: []
   PlayerTwoPawns: []
