@@ -8,7 +8,7 @@ public class CardBehaviour : MonoBehaviour
     [SerializeField] private Animator _hoverAnimator;
     [SerializeField] private TextMeshPro _cardNumberTextMesh;
 
-    [SerializeField] private bool IsCenter;
+    public bool IsCenter;
     [SerializeField] private GameObject CenterVFX;
 
     public Card Card;
@@ -59,6 +59,7 @@ public class CardBehaviour : MonoBehaviour
     public void MakeCenter()
     {
         IsCenter = true;
+        Card.isCenter = true;
         CenterVFX.gameObject.SetActive(true);
     }
 

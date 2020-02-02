@@ -1,8 +1,6 @@
 ﻿
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 namespace Kentro
@@ -18,27 +16,36 @@ namespace Kentro
         private  float _framewait = 0f;
         public Card Card;
         private Vector3 _targetPosition;
+        public Vector3 position;
         [SerializeField]private Animator _animator;
         List<Card> validCards;
         public Player player;
+        public Card defaultCard;
 
         public delegate void PawnSelectionEvent();
 
         public PawnSelectionEvent OnPawnSelection;
 
-
-        public void Move(Card card)
+        //this
+        public void Move(Card card)//porer
         {
             if (IsMoving) return;
             IsMoving = true;
 
             MakeCardsIdle();
+            if(card.Pawn != null)
+            {
+                card.Pawn.transform.position = card.Pawn.defaultCard.WorldPos;              
+                card.Pawn.Card = card.Pawn.defaultCard;
+                card.Pawn.defaultCard.Pawn = card.Pawn;
+            }
             _targetPosition = card.WorldPos;
             Card.SetPawn(null);
             CurrentSpeed = Card.value;
             Card = card;
             Card.SetPawn(this);
             StartCoroutine(MoveRoutine());
+            if (Card.isCenter == true) Card.Pawn = null;
         }
 
         public void SelectPawn()
@@ -60,6 +67,7 @@ namespace Kentro
 
         private void SuggestMoves()
         {
+            if (Card.isCenter) return;
             validCards = GetValidCards();
             foreach (var card in validCards)
             {

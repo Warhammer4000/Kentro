@@ -27,7 +27,7 @@ public class ClickManager : MonoBehaviour
                     {
                         behaviour.Card.Reveal();
                         _selectedPawn.Move(behaviour.Card);
-                        
+                        turn = !turn;
                     }
                 }
 
@@ -35,7 +35,6 @@ public class ClickManager : MonoBehaviour
                 {
                     _selectedPawn= behaviour.Card.Pawn;
                     _selectedPawn.SelectPawn();
-                    turn = !turn;
                     return;
                 }
             }

@@ -1,5 +1,4 @@
 ﻿
-
 using System;
 using UnityEngine;
 using Random = System.Random;
@@ -16,6 +15,7 @@ namespace Kentro
         public bool IsHovering;
         public IPowerUp powerup;
         public PawnLogic Pawn;
+        public bool isCenter;
         //todo
         //private PowerUpFactory powerFactory;
 
@@ -34,8 +34,8 @@ namespace Kentro
 
         public void Reveal()
         {
-           
-            value = new Random().Next(1, 7);
+            if (flipped) return;
+            value = new Random().Next(1, 5);
             OnCardReveal?.Invoke();
             flipped = true;
         }

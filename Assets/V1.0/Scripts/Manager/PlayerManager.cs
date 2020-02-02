@@ -47,9 +47,11 @@ public class PlayerManager : MonoBehaviour
         {
             Card card = GameManager.Instance.GetCard(position);
             card.value = 1;
-            var pawnInstance = Instantiate(player.PawnPrefab, card.WorldPos, Quaternion.identity);
+            var pawnInstance = Instantiate(player.PawnPrefab, card.WorldPos,
+                Quaternion.identity);
             card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
             pawnInstance.GetComponent<PawnLogic>().Card = card;
+            pawnInstance.GetComponent<PawnLogic>().defaultCard = card;
             pawnInstance.GetComponent<PawnLogic>().player = player;
 
             player.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
