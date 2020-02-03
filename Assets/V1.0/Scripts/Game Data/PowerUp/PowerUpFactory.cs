@@ -34,6 +34,9 @@ namespace Kentro
         }
 
 
+
+        #region Assign Method
+
         public void assign()
         {
             dic = new Dictionary<IPowerUp, int>();
@@ -62,6 +65,9 @@ namespace Kentro
             track.Add(pShuffleAll.getProbability(), pShuffleAll);
 
         }
+
+        #endregion
+
 
 
 
