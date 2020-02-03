@@ -26,9 +26,7 @@ namespace Kentro
             
             Goal = new Position((GridSize - 1) / 2, (GridSize - 1) / 2);
 
-            //todo Change this
-            //Player1 = new Player(0, 0,PlayerEnum.Player1);
-            //Player2 = new Player(_gridSize - 1, _gridSize - 1,PlayerEnum.Player2);
+            
         }
 
         #endregion

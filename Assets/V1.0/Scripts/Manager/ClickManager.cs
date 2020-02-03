@@ -39,6 +39,11 @@ public class ClickManager : MonoBehaviour
                 }
             }
 
+            //if(hit.transform.tag == "ShuffleAll")
+            //{
+                
+            //}
+
             //if (hit.transform.tag == PawnTag)
             //{
             //    PawnLogic pawn = hit.transform.GetComponent<PawnLogic>();
