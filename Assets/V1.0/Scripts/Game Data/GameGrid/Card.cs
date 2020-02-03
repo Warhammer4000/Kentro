@@ -16,8 +16,9 @@ namespace Kentro
         public IPowerUp powerup;
         public PawnLogic Pawn;
         public bool isCenter;
+        
         //todo
-        //private PowerUpFactory powerFactory;
+
 
         public delegate void CardEvent();
 
@@ -38,6 +39,17 @@ namespace Kentro
             value = new Random().Next(1, 5);
             OnCardReveal?.Invoke();
             flipped = true;
+            
+            
+            if (PowerUpFactory.Instance.ListPowerUps.Count != 0)
+            {
+                powerup = PowerUpFactory.Instance.ListPowerUps.Pop();
+            }
+            else
+            {
+                powerup = new PNone();
+            }
+            Debug.Log(powerup.getType().ToString());
         }
 
         public void Hide()

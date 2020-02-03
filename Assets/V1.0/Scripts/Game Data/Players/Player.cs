@@ -25,7 +25,7 @@ namespace Kentro
         public Player()
         {
             Pawns=new List<PawnLogic>();
-          
+            PowerUps = new List<IPowerUp>();
         }
 
 
