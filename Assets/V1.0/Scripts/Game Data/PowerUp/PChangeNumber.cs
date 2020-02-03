@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Kentro
 {
-    public class PChangeNumber:IPowerUp
+    public class PChangeNumber : IPowerUp
     {
         public PowerupEnum id = PowerupEnum.ChangeNumber;
         private int probability = 2;
@@ -17,10 +17,10 @@ namespace Kentro
             return id;
         }
 
-        public void Operation(Player player1, Player player2, Dictionary<Position, Card> grid,
+        public void Operation(Player player1, Player player2, List<Card> grid,
             params object[] arguments)
         {
-            grid[(Position)arguments[0]].value = (int)arguments[1];
+            //grid[(Position)arguments[0]].value = (int)arguments[1];
         }
 
        

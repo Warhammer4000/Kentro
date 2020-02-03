@@ -18,9 +18,15 @@ namespace Kentro
             return id;
         }
 
-        public void Operation(Player player1, Player player2, Dictionary<Position, Card> grid, params object[] arguments)
+        public void Operation(Player player1, Player player2,
+            List<Card> grid, params object[] arguments)
         {
-            throw new NotImplementedException();
+            for(int i = 0; i < grid.Count; i++)
+            {
+                if(grid[i].Pawn == null)
+                    grid[i].flipped = false;
+            }
+            
         }
 
         
