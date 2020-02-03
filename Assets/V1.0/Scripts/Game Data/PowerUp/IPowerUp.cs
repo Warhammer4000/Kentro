@@ -7,7 +7,7 @@ namespace Kentro
     public interface IPowerUp
     {
         int getProbability();
-        void Operation(Player player1,Player player2, List<Card> grid, 
+        void Operation(Player player, List<Card> grid, 
             params object[] arguments);
 
         PowerupEnum getType();

@@ -21,6 +21,7 @@ namespace Kentro
         List<Card> validCards;
         public Player player;
         public Card defaultCard;
+        public bool frozen;
 
         public delegate void PawnSelectionEvent();
 
@@ -134,7 +135,8 @@ namespace Kentro
             while (transform.position!=_targetPosition)
             {
                 yield return new WaitForSeconds(_framewait);
-                float step = CurrentSpeed * speed* Time.deltaTime; // calculate distance to move
+                float step = CurrentSpeed * speed* Time.deltaTime; 
+                // calculate distance to move
                 transform.position = Vector3.MoveTowards(transform.position, _targetPosition, step);
             }
 

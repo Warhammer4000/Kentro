@@ -31,7 +31,8 @@ public class ClickManager : MonoBehaviour
                     }
                 }
 
-                if (behaviour.Card.Pawn != null && turn == behaviour.Card.Pawn.player.isMyTurn)
+                if (behaviour.Card.Pawn != null && turn == 
+                    behaviour.Card.Pawn.player.isMyTurn)
                 {
                     _selectedPawn= behaviour.Card.Pawn;
                     _selectedPawn.SelectPawn();
