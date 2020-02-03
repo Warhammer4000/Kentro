@@ -55,7 +55,10 @@ namespace Kentro
         }
 
 
+
         #region Assign Method
+
+
         public void assign()
         {
             ListPowerUps = new Stack<IPowerUp>();
@@ -88,6 +91,7 @@ namespace Kentro
         }
 
         #endregion
+
 
     }
 }

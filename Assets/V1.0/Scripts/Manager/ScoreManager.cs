@@ -8,8 +8,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     private int goalScore = 100;
     private int hitScore = 30;
-    [SerializeField] public Text player1Score;
-    [SerializeField] public Text player2Score;
+    [SerializeField] public TextMeshProUGUI player1Score;
+    [SerializeField] public TextMeshProUGUI player2Score;
 
 
 
