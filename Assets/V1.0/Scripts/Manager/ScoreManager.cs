@@ -24,12 +24,12 @@ public class ScoreManager : MonoBehaviour
     public void GoalScoreAdd(Player player)
     {
         player.Score += goalScore;
-        if (player.PlayerId == PlayerEnum.Player1)
-        {
-            player1Score.text = player.Score.ToString();
-            return;
-        }
-        player2Score.text = player.Score.ToString();
+        //if (player.PlayerId == PlayerEnum.Player1)
+        //{
+        //    player1Score.text = player.Score.ToString();
+        //    return;
+        //}
+        //player2Score.text = player.Score.ToString();
 
         Debug.Log(player.Score);
     }
@@ -37,12 +37,13 @@ public class ScoreManager : MonoBehaviour
     public void HitScoreAdd(Player player)
     {
         player.Score += hitScore;
-        if (player.PlayerId == PlayerEnum.Player1)
-        {
-            player1Score.text = player.Score.ToString();
-            return;
-        }
-        player2Score.text = player.Score.ToString();
+        //if (player.PlayerId == PlayerEnum.Player1)
+        //{
+        //    player1Score.text = player.Score.ToString();
+        //    return;
+        //}
+        //player2Score.text = player.Score.ToString();
+        Debug.Log(player.Score);
     }
 
 }
