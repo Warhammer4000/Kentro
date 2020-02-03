@@ -31,14 +31,10 @@ namespace Kentro
         {
             if (IsMoving) return;
             IsMoving = true;
-
             MakeCardsIdle();
             if(card.Pawn != null)
             {
-                card.Pawn.transform.position = card.Pawn.defaultCard.WorldPos;              
-                card.Pawn.Card = card.Pawn.defaultCard;
-                card.Pawn.defaultCard.Pawn = card.Pawn;
-                ScoreManager.Instance.HitScoreAdd(player);
+                killPawn(card);
             }
             _targetPosition = card.WorldPos;
             Card.SetPawn(null);
@@ -130,6 +126,15 @@ namespace Kentro
             IsMoving = false;
             DeselectPawn();
             validCards.Clear();
+        }
+
+        private void killPawn(Card card)
+        {
+            card.Pawn.transform.position = card.Pawn.defaultCard.WorldPos;
+            card.Pawn.Card = card.Pawn.defaultCard;
+            card.Pawn.defaultCard.Pawn = card.Pawn;
+            ScoreManager.Instance.HitScoreAdd(player);
+
         }
 
     }

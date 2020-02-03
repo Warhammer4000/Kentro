@@ -12,6 +12,8 @@ namespace Kentro
         
         public GameObject PawnPrefab;
         public List<PawnLogic> Pawns;
+        public PlayerEnum PlayerId;
+        
 
         public List<IPowerUp> PowerUps;
        

@@ -1,6 +1,7 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 using Kentro;
+using TMPro;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager Instance;
 
+   
+    
 
     public Player Player1;
     public Player Player2;
@@ -36,7 +39,9 @@ public class PlayerManager : MonoBehaviour
         PlayerTwoPawns = GameManager.Instance.GetPlayer2PawnPositions();
 
         Player1.isMyTurn = true;
+        Player1.PlayerId = PlayerEnum.Player1;
         Player2.isMyTurn = false;
+        Player2.PlayerId = PlayerEnum.Player2;
         SpawnPawn(Player1,PlayerOnePawns);
         SpawnPawn(Player2,PlayerTwoPawns);
     }
@@ -49,12 +54,13 @@ public class PlayerManager : MonoBehaviour
             card.value = 1;
             var pawnInstance = Instantiate(player.PawnPrefab, card.WorldPos,
                 Quaternion.identity);
-            card.SetPawn(pawnInstance.GetComponent<PawnLogic>());
-            pawnInstance.GetComponent<PawnLogic>().Card = card;
-            pawnInstance.GetComponent<PawnLogic>().defaultCard = card;
-            pawnInstance.GetComponent<PawnLogic>().player = player;
+            PawnLogic pawn = pawnInstance.GetComponent<PawnLogic>();
+            card.SetPawn(pawn);
+            pawn.Card = card;
+            pawn.defaultCard = card;
+            pawn.player = player;
 
-            player.Pawns.Add(pawnInstance.GetComponent<PawnLogic>());
+            player.Pawns.Add(pawn);
         }
 
         //todo we can do better
@@ -69,5 +75,5 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-
+    
 }
