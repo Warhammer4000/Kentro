@@ -4,13 +4,17 @@ namespace Kentro
 {
 
     public class PSwap:IPowerUp
-
-
     {
+        public PowerupEnum id = PowerupEnum.Swap;
         private int probability = 6;
         public int getProbability()
         {
             return probability;
+        }
+
+        public PowerupEnum getType()
+        {
+            return id;
         }
 
         public void Operation(Player player1, Player player2, Dictionary<Position, Card> grid,

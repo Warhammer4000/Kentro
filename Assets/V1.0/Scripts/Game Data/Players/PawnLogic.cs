@@ -39,6 +39,14 @@ namespace Kentro
             _targetPosition = card.WorldPos;
             Card.SetPawn(null);
             CurrentSpeed = Card.value;
+
+            if(card.powerup.getType() != PowerupEnum.None)
+            {
+                player.PowerUps.Add(card.powerup);
+                card.powerup = new PNone();
+            }
+
+
             Card = card;
             Card.SetPawn(this);
             StartCoroutine(MoveRoutine());
@@ -46,6 +54,13 @@ namespace Kentro
             {
                 ScoreManager.Instance.GoalScoreAdd(player);
                 Card.Pawn = null;
+            }
+            
+            //Test
+            if (player.PowerUps.Count != 0)
+            {
+                Debug.Log(player.PlayerId.ToString());
+                Debug.Log(player.PowerUps[player.PowerUps.Count - 1].getType().ToString());
             }
         }
 

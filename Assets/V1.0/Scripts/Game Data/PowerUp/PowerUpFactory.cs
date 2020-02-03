@@ -1,25 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace Kentro
 {
-    public class PowerUpFactory
+    public class PowerUpFactory : MonoBehaviour
     {
+        public static PowerUpFactory Instance { get; set; }
+        
         private Dictionary<IPowerUp,int> dic;
         private Dictionary<int, IPowerUp> track;
         private IPowerUp pBlock,pChangeNumber,pFreeze,pNone,pShow,pSwap,pShuffleAll;
         public Stack<IPowerUp> ListPowerUps;
-        public PowerUpFactory()
+        
+        private void Awake()
         {
-            assign();
-            ListPowerUps = new Stack<IPowerUp>();
+            if (Instance == null)
+            {
+                Instance = this;
+                assign();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
+        
+        void Start()
+        {
+            
+            InvokeRepeating("GetPowerUp", 20.0f, 30.0f);
+        }
+
+        
+
 
         public void GetPowerUp()
         {
-            Random random = new Random();
-            int RandomValue = random.Next(1,7);
+
+            System.Random random = new System.Random();
+            int RandomValue = random.Next(1,8);
 
             if (dic[track[RandomValue]] != 0)
             {
@@ -37,8 +58,10 @@ namespace Kentro
 
         #region Assign Method
 
+
         public void assign()
         {
+            ListPowerUps = new Stack<IPowerUp>();
             dic = new Dictionary<IPowerUp, int>();
             track = new Dictionary<int, IPowerUp>();
             pBlock = new PBlock();
@@ -64,11 +87,10 @@ namespace Kentro
             track.Add(pSwap.getProbability(), pSwap);
             track.Add(pShuffleAll.getProbability(), pShuffleAll);
 
+            
         }
 
         #endregion
-
-
 
 
     }

@@ -10,6 +10,6 @@ namespace Kentro
         void Operation(Player player1,Player player2, Dictionary<Position, Card> grid, 
             params object[] arguments);
 
-        
+        PowerupEnum getType();
     }
 }

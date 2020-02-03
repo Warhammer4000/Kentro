@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FloorGenerator FloorGenerator;
 
 
-
     [SerializeField]private Grid _gameGrid;
 
    
@@ -36,7 +35,6 @@ public class GameManager : MonoBehaviour
     {
         _gameGrid=new Grid(9);
         FloorGenerator.GenerateMap(_gameGrid);
-       
     }
 
     public Card GetCard(Position position)
