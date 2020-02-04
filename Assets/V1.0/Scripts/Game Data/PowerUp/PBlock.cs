@@ -18,12 +18,17 @@ namespace Kentro
             return id;
         }
 
-        public void Operation(Player player, List<Card> grid,
-            params object[] arguments)
+        public void Operation(List<Card> grid, int value)
         {
-            Card card = (Card) arguments[0];
-            card.blocked = true;
+            throw new NotImplementedException();
         }
+
+        //public void Operation(Player player, List<Card> grid,
+        //    params object[] arguments)
+        //{
+        //    Card card = (Card) arguments[0];
+        //    card.blocked = true;
+        //}
 
     }
 }

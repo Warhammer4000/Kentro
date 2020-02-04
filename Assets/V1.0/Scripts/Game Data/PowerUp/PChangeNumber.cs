@@ -17,14 +17,20 @@ namespace Kentro
             return id;
         }
 
-        public void Operation(Player player, List<Card> grid,
-            params object[] arguments)
+        public void Operation(List<Card> grid, int value)
         {
-            //grid[(Position)arguments[0]].value = (int)arguments[1];
-            Card card = (Card) arguments[0];
-            card.value = (int) arguments[1];
+
+            grid[0].ChangeNumber(value);
         }
 
-       
+        //public void Operation(Player player, List<Card> grid,
+        //    params object[] arguments)
+        //{
+        //    //grid[(Position)arguments[0]].value = (int)arguments[1];
+        //    Card card = (Card) arguments[0];
+        //    card.value = (int) arguments[1];
+        //}
+
+
     }
 }

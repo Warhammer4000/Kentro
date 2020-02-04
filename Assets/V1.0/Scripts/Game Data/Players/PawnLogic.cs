@@ -18,7 +18,7 @@ namespace Kentro
         private Vector3 _targetPosition;
         public Vector3 position;
         [SerializeField]private Animator _animator;
-        List<Card> validCards;
+        public List<Card> validCards;
         public Player player;
         public Card defaultCard;
         public bool frozen;
@@ -91,6 +91,16 @@ namespace Kentro
                 card.Hover();
             }
         }
+        public void DeSuggestMoves()
+        {
+            if (Card.isCenter) return;
+            
+            foreach (var card in validCards)
+            {
+                card.Idle();
+            }
+            validCards.Clear();
+        }
 
         private void MakeCardsIdle()
         {
@@ -142,7 +152,9 @@ namespace Kentro
 
             IsMoving = false;
             DeselectPawn();
-            validCards.Clear();
+            DeSuggestMoves();
+
+
         }
 
         private void killPawn(Card card)

@@ -18,15 +18,24 @@ namespace Kentro
             return id;
         }
 
-        public void Operation(Player player,
-            List<Card> grid, params object[] arguments)
+        public void Operation(List<Card> grid, int value)
         {
-            for(int i = 0; i < grid.Count; i++)
+            for (int i = 0; i < grid.Count; i++)
             {
-                if(grid[i].Pawn == null)
+                if (grid[i].Pawn == null)
                     grid[i].Hide();
             }
-            
-        }  
+        }
+
+        //public void Operation(Player player,
+        //    List<Card> grid, params object[] arguments)
+        //{
+        //    for(int i = 0; i < grid.Count; i++)
+        //    {
+        //        if(grid[i].Pawn == null)
+        //            grid[i].Hide();
+        //    }
+
+        //}  
     }
 }

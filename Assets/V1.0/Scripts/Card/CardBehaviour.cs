@@ -27,9 +27,15 @@ public class CardBehaviour : MonoBehaviour
         Card.OnCardIdle += IdleCard;
         Card.OnCardReveal += RevealCard;
         Card.OnCardHide += HideCard;
+        Card.OnCardChange += ChangeNumber;
     }
 
     #region AnimationFunctions
+
+    public void ChangeNumber(int value)
+    {
+        SetNumber(Card.value);
+    }
 
     public void RevealCard()
     {

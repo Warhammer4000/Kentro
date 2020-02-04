@@ -1,5 +1,5 @@
-﻿
-using Kentro;
+﻿using Kentro;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ClickManager : MonoBehaviour
@@ -7,20 +7,43 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private string CardTag = "Card";
     [SerializeField] private string PawnTag = "Pawn";
 
-    private PawnLogic _selectedPawn;
+    public PawnLogic _selectedPawn;
     private bool turn = true;
+    public PowerupEnum state;
+
+    private Card swap1, swap2;
+
+    public static ClickManager Instance { get; set; }
+
+    void Awake()
+    {
+
+        if (Instance == null)
+        {
+            Instance = this;
+            state = PowerupEnum.None;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Update()
     {
+
         if (!Input.GetMouseButtonDown(0)) return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out var hit, 100.0f))
         {
-           
+        
+            if(PowerupEnum.None == state) 
+            { 
+
             if (hit.transform.tag == CardTag)
             {
                 CardBehaviour behaviour = hit.transform.GetComponent<CardBehaviour>();
-
+                
                 if (_selectedPawn != null)
                 {
                     if (behaviour.Card.IsHovering)
@@ -38,22 +61,40 @@ public class ClickManager : MonoBehaviour
                     _selectedPawn.SelectPawn();
                     return;
                 }
-            }
-
-            //if(hit.transform.tag == "ShuffleAll")
-            //{
-                
-            //}
-
-            //if (hit.transform.tag == PawnTag)
-            //{
-            //    PawnLogic pawn = hit.transform.GetComponent<PawnLogic>();
-                
-            //    pawn.SelectPawn();
-                
-            //}
+            } 
         }
+
+            if(PowerupEnum.Swap == state)
+            {
+                if (hit.transform.tag == CardTag)
+                {
+                    CardBehaviour behaviour = hit.transform.GetComponent<CardBehaviour>();
+                    if (behaviour.Card.Pawn == null && behaviour.Card.flipped)
+                    {
+                        if(swap1 == null)
+                        {
+                            swap1 = behaviour.Card;
+                            swap1.Hover();
+                        }
+                        else
+                        {
+                            swap2 = behaviour.Card;
+                            IPowerUp power = new PSwap();
+                            List<Card> l = new List<Card>();
+                            l.Add(swap1);l.Add(swap2);
+                            power.Operation(l, 0);
+                            swap1 = null;
+                            swap2 = null;
+                            state = PowerupEnum.None;
+
+                        }
+                    }
+                }
+            }
+           
     }
+}
+    
 
 
    

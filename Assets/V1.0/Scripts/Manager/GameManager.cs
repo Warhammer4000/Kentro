@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FloorGenerator FloorGenerator;
 
 
-    [SerializeField]private Grid _gameGrid;
+    [SerializeField]public Grid _gameGrid;
 
    
 

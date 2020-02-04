@@ -17,12 +17,17 @@ namespace Kentro
             return id;
         }
 
-        public void Operation(Player player, List<Card> grid,
-            params object[] arguments)
+        public void Operation(List<Card> grid, int value)
         {
             throw new NotImplementedException();
         }
 
-        
+        //public void Operation(Player player, List<Card> grid,
+        //    params object[] arguments)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+
     }
 }

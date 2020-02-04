@@ -22,16 +22,24 @@ namespace Kentro
 
 
         public delegate void CardEvent();
+        public delegate void CardChangeEvent(int value);
 
         public CardEvent OnCardReveal;
         public CardEvent OnCardHide;
         public CardEvent OnCardHover;
         public CardEvent OnCardIdle;
+        public CardChangeEvent OnCardChange;
 
         public Card(Position position)
         {
             Position = position;
             flipped = false;
+        }
+
+        public void ChangeNumber(int Value)
+        {
+            value = Value;
+            OnCardChange?.Invoke(value);
         }
 
         public void Reveal()
