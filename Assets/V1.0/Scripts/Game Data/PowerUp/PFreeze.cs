@@ -17,7 +17,7 @@ namespace Kentro
             return id;
         }
 
-        public void Operation(Player player1, Player player2, List<Card> grid,
+        public void Operation(Player player, List<Card> grid,
             params object[] arguments)
         {
             throw new NotImplementedException();

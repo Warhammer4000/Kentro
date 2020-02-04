@@ -17,10 +17,17 @@ namespace Kentro
             return id;
         }
 
-        public void Operation(Player player1, Player player2, List<Card> grid,
+        public void Operation(Player player, List<Card> grid,
             params object[] arguments)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < arguments.Length; ++i)
+            {
+                Card card = (Card) arguments[i];
+                if (card.flipped != true)
+                {
+                    card.Reveal();
+                }
+            }
         }
 
         
