@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Security.Cryptography;
 using UnityEngine;
 using Random = System.Random;
 
@@ -45,6 +46,14 @@ namespace Kentro
         public void Reveal()
         {
             if (flipped) return;
+
+            //RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+            //var byteArray = new byte[4];
+            //provider.GetBytes(byteArray);
+
+            ////convert 4 bytes to an integer
+            //var randomInteger = BitConverter.ToUInt32(byteArray, 0);
+
             value = new Random().Next(1, 5);
             OnCardReveal?.Invoke();
             flipped = true;

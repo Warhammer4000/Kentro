@@ -77,7 +77,6 @@ public class ClickManager : MonoBehaviour
                         if (swap1 == null)
                         {
                             swap1 = behaviour.Card;
-                            swap1.Hover();
                         }
                         else
                         {

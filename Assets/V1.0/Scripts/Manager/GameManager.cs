@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     public void CreateGrid()
     {
-        _gameGrid=new Grid(9);
+        _gameGrid=new Grid(13);
         FloorGenerator.GenerateMap(_gameGrid);
     }
 
