@@ -21,7 +21,7 @@ namespace Kentro
         public List<Card> validCards;
         public Player player;
         public Card defaultCard;
-        public bool frozen;
+        public int frozen = 0;
 
         public delegate void PawnSelectionEvent();
 
@@ -37,6 +37,7 @@ namespace Kentro
             {
                 killPawn(card);
             }
+            frozenAdjust();
             _targetPosition = card.WorldPos;
             Card.SetPawn(null);
             CurrentSpeed = Card.value;
@@ -67,6 +68,7 @@ namespace Kentro
 
         public void SelectPawn()
         {
+            if (frozen > 0) return;
             IsSelected = true;
             _animator.SetBool("Hovering",IsSelected);
             OnPawnSelection?.Invoke();
@@ -147,14 +149,13 @@ namespace Kentro
                 yield return new WaitForSeconds(_framewait);
                 float step = CurrentSpeed * speed* Time.deltaTime; 
                 // calculate distance to move
-                transform.position = Vector3.MoveTowards(transform.position, _targetPosition, step);
+                transform.position = Vector3.MoveTowards(transform.position,
+                    _targetPosition, step);
             }
 
             IsMoving = false;
             DeselectPawn();
             DeSuggestMoves();
-
-
         }
 
         private void killPawn(Card card)
@@ -165,6 +166,15 @@ namespace Kentro
             ScoreManager.Instance.HitScoreAdd(player);
 
         }
+        private void frozenAdjust()
+        {
+            foreach(var pawn in player.Pawns)
+            {
+                pawn.frozen -= 1;
+            }
+        }
+
+
 
     }
 }

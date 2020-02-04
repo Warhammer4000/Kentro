@@ -19,7 +19,7 @@ namespace Kentro
 
         public void Operation(List<Card> grid, int value)
         {
-            throw new NotImplementedException();
+            grid[0].Pawn.frozen = 2;
         }
 
         //public void Operation(Player player, List<Card> grid,

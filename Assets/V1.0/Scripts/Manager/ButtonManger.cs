@@ -39,4 +39,8 @@ public class ButtonManger : MonoBehaviour
         ClickManager.Instance.state = PowerupEnum.Swap;
 
     }
+    public void FreezePawn()
+    {
+        ClickManager.Instance.state = PowerupEnum.Freeze;
+    }
 }

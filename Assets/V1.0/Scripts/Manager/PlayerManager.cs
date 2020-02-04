@@ -38,9 +38,8 @@ public class PlayerManager : MonoBehaviour
 
         PlayerTwoPawns = GameManager.Instance.GetPlayer2PawnPositions();
 
-        Player1.isMyTurn = true;
-        Player1.PlayerId = PlayerEnum.Player1;
-        Player2.isMyTurn = false;
+                Player1.PlayerId = PlayerEnum.Player1;
+        
         Player2.PlayerId = PlayerEnum.Player2;
         SpawnPawn(Player1,PlayerOnePawns);
         SpawnPawn(Player2,PlayerTwoPawns);

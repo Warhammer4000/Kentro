@@ -10,8 +10,7 @@ namespace Kentro
         ChangeNumber,
         ShuffleAll,
         Swap,
-        ShowCard,
-        pl1,
-        pl2
+        ShowCard
+        
     }
 }
