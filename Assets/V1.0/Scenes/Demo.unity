@@ -1108,8 +1108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a002d84df66ae6849b27abbc3d8d2043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Score: {fileID: 1035520533}
-  player2Score: {fileID: 147713382}
+  player1Score: {fileID: 147713382}
+  player2Score: {fileID: 1958056345}
 --- !u!114 &366412455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a002d84df66ae6849b27abbc3d8d2043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Score: {fileID: 1035520533}
+  player1Score: {fileID: 147713382}
   player2Score: {fileID: 1958056345}
 --- !u!1 &398185077
 GameObject:
@@ -2861,7 +2861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a002d84df66ae6849b27abbc3d8d2043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Score: {fileID: 1035520533}
+  player1Score: {fileID: 147713382}
   player2Score: {fileID: 1958056345}
 --- !u!1 &1089518562
 GameObject:
