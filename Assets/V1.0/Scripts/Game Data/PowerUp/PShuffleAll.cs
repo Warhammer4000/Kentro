@@ -7,7 +7,7 @@ namespace Kentro
      public class PShuffleAll:IPowerUp
     {
         public PowerupEnum id = PowerupEnum.ShuffleAll;
-        private int probability = 7;
+        private int probability = 5;
         public int getProbability()
         {
             return probability;

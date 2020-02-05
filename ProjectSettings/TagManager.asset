@@ -9,6 +9,7 @@ TagManager:
   - Pawn
   - Shuffle All
   - Shuffle
+  - Swap
   layers:
   - Default
   - TransparentFX

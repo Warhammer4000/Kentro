@@ -11,7 +11,7 @@ namespace Kentro
         
         private Dictionary<IPowerUp,int> dic;
         private Dictionary<int, IPowerUp> track;
-        private IPowerUp pBlock,pChangeNumber,pFreeze,pNone,pShow,pSwap,pShuffleAll;
+        private IPowerUp pChangeNumber,pFreeze,pNone,pShow,pSwap,pShuffleAll;
         public Stack<IPowerUp> ListPowerUps;
         
         private void Awake()
@@ -32,15 +32,11 @@ namespace Kentro
             
             InvokeRepeating("GetPowerUp", 20.0f, 30.0f);
         }
-
-        
-
-
         public void GetPowerUp()
         {
 
             System.Random random = new System.Random();
-            int RandomValue = random.Next(1,8);
+            int RandomValue = random.Next(1,7);
 
             if (dic[track[RandomValue]] != 0)
             {
@@ -64,14 +60,12 @@ namespace Kentro
             ListPowerUps = new Stack<IPowerUp>();
             dic = new Dictionary<IPowerUp, int>();
             track = new Dictionary<int, IPowerUp>();
-            pBlock = new PBlock();
             pChangeNumber = new PChangeNumber();
             pFreeze = new PFreeze();
             pNone = new PNone();
             pShow = new PShow();
             pSwap = new PSwap();
             pShuffleAll = new PShuffleAll();
-            dic.Add(pBlock, 2);
             dic.Add(pChangeNumber, 2);
             dic.Add(pFreeze, 2);
             dic.Add(pNone, 2);
@@ -79,7 +73,6 @@ namespace Kentro
             dic.Add(pSwap, 2);
             dic.Add(pShuffleAll, 2);
 
-            track.Add(pBlock.getProbability(), pBlock);
             track.Add(pChangeNumber.getProbability(), pChangeNumber);
             track.Add(pFreeze.getProbability(), pFreeze);
             track.Add(pNone.getProbability(), pNone);

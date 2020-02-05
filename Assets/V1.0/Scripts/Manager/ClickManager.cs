@@ -112,23 +112,6 @@ public class ClickManager : MonoBehaviour
                 }
 
             }
-            if (PowerupEnum.Block == state)
-            {
-                if (hit.transform.tag == CardTag)
-                {
-                    CardBehaviour behaviour = hit.transform.GetComponent<CardBehaviour>();
-                    if (behaviour.Card.Pawn == null )
-                    {
-                        IPowerUp power = new PBlock();
-                        List<Card> list = new List<Card>();
-                        list.Add(behaviour.Card);
-                        power.Operation(list, 0);
-                        state = PowerupEnum.None;
-
-                    }
-                }
-
-            }
         }
 
 

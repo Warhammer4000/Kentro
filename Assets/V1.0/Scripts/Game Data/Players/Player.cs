@@ -14,9 +14,7 @@ namespace Kentro
         public List<PawnLogic> Pawns;
         public PlayerEnum PlayerId;
         
-
-        public List<IPowerUp> PowerUps;
-       
+        public Dictionary<PowerupEnum,int> PowerUps;
         [SerializeField]private int _numberOfPawn = 3;
         
         public int Score = 0;
@@ -25,7 +23,12 @@ namespace Kentro
         public Player()
         {
             Pawns=new List<PawnLogic>();
-            PowerUps = new List<IPowerUp>();
+            PowerUps = new Dictionary<PowerupEnum, int>();
+            PowerUps.Add(PowerupEnum.ChangeNumber, 0);
+            PowerUps.Add(PowerupEnum.Freeze, 0);
+            PowerUps.Add(PowerupEnum.ShowCard, 0);
+            PowerUps.Add(PowerupEnum.ShuffleAll, 0);
+            PowerUps.Add(PowerupEnum.Swap, 0);
         }
 
 

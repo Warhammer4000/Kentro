@@ -20,15 +20,31 @@ public class ButtonManger : MonoBehaviour
 
     private void Update()
     {
-        if (ClickManager.Instance._selectedPawn.player.PlayerId == PlayerEnum.Player1)
+        if (ClickManager.Instance.turn == PlayerEnum.Player1)
         {
             player1ShowCard.interactable = true;
             player2ShowCard.interactable = false;
+            player1ShuffleAll.interactable = true;
+            player2ShuffleAll.interactable = false;
+            player1Swap.interactable = true;
+            player2Swap.interactable = false;
+            player1Freeze.interactable = true;
+            player2Freeze.interactable = false;
+            player1ChangeNumber.interactable = true;
+            player2ChangeNumber.interactable = false;
         }
         else
         {
-            player2ShowCard.interactable = true;
             player1ShowCard.interactable = false;
+            player2ShowCard.interactable = true;
+            player1ShuffleAll.interactable = false;
+            player2ShuffleAll.interactable = true;
+            player1Swap.interactable = false;
+            player2Swap.interactable = true;
+            player1Freeze.interactable = false;
+            player2Freeze.interactable = true;
+            player1ChangeNumber.interactable = false;
+            player2ChangeNumber.interactable = true;
         }
     }
 

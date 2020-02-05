@@ -44,7 +44,13 @@ namespace Kentro
 
             if(card.powerup.getType() != PowerupEnum.None)
             {
-                player.PowerUps.Add(card.powerup);
+                player.PowerUps[card.powerup.getType()] += 1;
+                
+                foreach(KeyValuePair<PowerupEnum,int> keys in player.PowerUps)
+                {
+                    Debug.Log(keys.Key.ToString() + ":  " + keys.Value);
+                }
+
                 card.powerup = new PNone();
             }
 
@@ -59,11 +65,11 @@ namespace Kentro
             }
             
             //Test
-            if (player.PowerUps.Count != 0)
-            {
-                Debug.Log(player.PlayerId.ToString());
-                Debug.Log(player.PowerUps[player.PowerUps.Count - 1].getType().ToString());
-            }
+            //if (player.PowerUps.Count != 0)
+            //{
+            //    Debug.Log(player.PlayerId.ToString());
+            //    Debug.Log(player.PowerUps[player.PowerUps.Count - 1].getType().ToString());
+            //}
         }
 
         public void SelectPawn()
