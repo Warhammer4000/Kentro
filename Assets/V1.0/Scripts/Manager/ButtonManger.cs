@@ -2,12 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Kentro;
+using UnityEngine.UI;
 
 public class ButtonManger : MonoBehaviour
 {
+    //[SerializeField] private GameObject ShuffleAll;
+    public Button player1ShuffleAll;
+    public Button player2ShuffleAll;
+    public Button player1Swap;
+    public Button player2Swap;
+    public Button player1Freeze;
+    public Button player2Freeze;
+    public Button player1ChangeNumber;
+    public Button player2ChangeNumber;
+    public Button player1ShowCard;
+    public Button player2ShowCard;
+
+    private void Update()
+    {
+        if (ClickManager.Instance._selectedPawn.player.PlayerId == PlayerEnum.Player1)
+        {
+            player1ShowCard.interactable = true;
+            player2ShowCard.interactable = false;
+        }
+        else
+        {
+            player2ShowCard.interactable = true;
+            player1ShowCard.interactable = false;
+        }
+    }
+
     public void ShowCard()
     {
-
+        
         List<Card> NeedToShow = ClickManager.Instance._selectedPawn.validCards;
         IPowerUp power = new PShow();
         power.Operation(NeedToShow, 0);

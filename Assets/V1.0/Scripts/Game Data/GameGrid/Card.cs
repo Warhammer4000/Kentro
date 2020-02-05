@@ -45,16 +45,28 @@ namespace Kentro
 
         public void Reveal()
         {
-            if (flipped) return;
 
-            //RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
-            //var byteArray = new byte[4];
-            //provider.GetBytes(byteArray);
+            if (flipped ) return;
 
-            ////convert 4 bytes to an integer
-            //var randomInteger = BitConverter.ToUInt32(byteArray, 0);
+            while (true)
+            {
+                int i = 0;
+                while (true) {
+                    i++;
+                    if (i > 250) break;
+                }
+                RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+                var byteArray = new byte[4];
+                provider.GetBytes(byteArray);
 
-            value = new Random().Next(1, 5);
+                //convert 4 bytes to an integer
+                var randomInteger = BitConverter.ToUInt32(byteArray, 0);
+
+                value = (int)randomInteger % 5;
+                if (value > 0) break;
+            }
+            //value = new Random().Next(1, 5);
+            //Debug.Log(value);
             OnCardReveal?.Invoke();
             flipped = true;
             blocked = false;

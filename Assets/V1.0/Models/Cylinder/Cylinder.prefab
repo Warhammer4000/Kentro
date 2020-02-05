@@ -76,9 +76,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e73469dfed7f864cba5f10af09cbb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  _framewait: 0.1
+  speed: 0.5
+  Card:
+    value: 0
+    Position:
+      X: 0
+      Y: 0
+    WorldPos: {x: 0, y: 0, z: 0}
+    flipped: 0
+    IsHovering: 0
+    Pawn: {fileID: 0}
+    isCenter: 0
+    blocked: 0
+  position: {x: 0, y: 0, z: 0}
   _animator: {fileID: 5052259511306076525}
+  validCards: []
+  player:
+    PawnPrefab: {fileID: 0}
+    Pawns: []
+    PlayerId: 0
+    _numberOfPawn: 3
+    Score: 0
+  defaultCard:
+    value: 0
+    Position:
+      X: 0
+      Y: 0
+    WorldPos: {x: 0, y: 0, z: 0}
+    flipped: 0
+    IsHovering: 0
+    Pawn: {fileID: 0}
+    isCenter: 0
+    blocked: 0
+  frozen: 0
 --- !u!65 &9036366143162497595
 BoxCollider:
   m_ObjectHideFlags: 0
